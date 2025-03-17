@@ -16,37 +16,37 @@ export default defineNuxtConfig({
 				{
 					rel: "icon",
 					type: "image/png",
-					href: "http://92.205.130.62:5000/images/favicon-64x64.png",
+					href: "https://powerline.elevate8.co/images/favicon-64x64.png",
 				},
 				{
 					rel: "icon",
 					type: "image/png",
-					href: "http://92.205.130.62:5000/images/favicon-32x32.png",
+					href: "https://powerline.elevate8.co/images/favicon-32x32.png",
 				},
 				{
 					rel: "icon",
 					type: "image/png",
-					href: "http://92.205.130.62:5000/images/favicon-16x16.png",
+					href: "https://powerline.elevate8.co/images/favicon-16x16.png",
 				},
 				{
 					rel: "apple-touch-icon",
 					type: "image/png",
-					href: "http://92.205.130.62:5000/images/apple-touch-icon-180x180.png",
+					href: "https://powerline.elevate8.co/images/apple-touch-icon-180x180.png",
 				},
 				{
 					rel: "mask-icon",
-					href: "http://92.205.130.62:5000/images/icons/mask-icon.svg",
+					href: "https://powerline.elevate8.co/images/icons/mask-icon.svg",
 					color: "#32393C",
 				},
 				{
 					rel: "icon",
 					sizes: "192x192",
-					href: "http://92.205.130.62:5000/images/android-chrome-192x192.png",
+					href: "https://powerline.elevate8.co/images/android-chrome-192x192.png",
 				},
 				{
 					rel: "icon",
 					sizes: "512x512",
-					href: "http://92.205.130.62:5000/images/android-chrome-512x512.png",
+					href: "https://powerline.elevate8.co/images/android-chrome-512x512.png",
 				},
 			],
 			meta: [

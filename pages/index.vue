@@ -73,9 +73,7 @@
         <div class="marquee overflow-hidden">
             <div class="wrapper grid grid-flow-col auto-cols-[10rem] lg:auto-cols-[15rem] justify-items-center items-center mt-10 lg:my-10 animate-[marquee_40s_linear_infinite] lg:animate-[marqueelg_40s_linear_infinite]">
                 <template v-for="(marquee, index) in duplicatedMarqueeList" :key="index">
-                    <a :href="marquee.link" target="_blank">
-                        <img loading="lazy" class="marquee-item w-2/3" :src="`images/logos/${marquee.image}.svg`" :alt="marquee.alt" :width="marquee.width" :height="marquee.height" data-aos="fade-up" :data-aos-delay="(index + 1) * 100"/>
-                    </a>
+                    <img loading="lazy" class="marquee-item w-2/3" :src="`images/logos/${marquee.image}.svg`" :alt="marquee.alt" :width="marquee.width" :height="marquee.height" data-aos="fade-up" :data-aos-delay="(index + 1) * 100"/>
                 </template>
             </div>
         </div>
@@ -109,6 +107,19 @@
 </template>
 
 <script setup>
+    useSeoMeta({
+        title: 'Hompepage',
+        description: '',
+
+        ogTitle: 'Hompepage',
+        ogDescription: '',
+        ogImage: '',
+
+        twitterTitle: 'Hompepage',
+        twitterDescription: '',
+        twitterCard: 'summary_large_image',
+    })
+
     const locations = [
         'AUBMC ACC',
         'AUB Administration', 
@@ -199,7 +210,7 @@
         { image: "cavicel", alt: "Cavicel", width: "", height: "", link: "" },
         { image: "eae-elektrik", alt: "EAE Elektrik", width: "", height: "", link: "" },
         { image: "ebdc", alt: "EBDC", width: "", height: "", link: "" },
-        { image: "etelec", alt: "Etele", width: "", height: "", link: "" },
+        { image: "etelec", alt: "Etelec", width: "", height: "", link: "" },
         { image: "hubbel-raco", alt: "Hubbel Raco", width: "", height: "", link: "" },
         { image: "ideal-industries-inc", alt: "Ideal Industries Inc", width: "", height: "", link: "" },
         { image: "itcc", alt: "ITCC", width: "", height: "", link: "" },
@@ -229,26 +240,6 @@
             swiperRef.value.swiper.slideNext();
         }
     };
-
-    onMounted(() => {
-        // Ensure Swiper instance is properly referenced
-        if (swiperRef.value?.swiper) {
-            console.log('Swiper initialized', swiperRef.value.swiper);
-        }
-    });
-
-    useSeoMeta({
-        title: 'Hompepage',
-        description: '',
-
-        ogTitle: 'Hompepage',
-        ogDescription: '',
-        ogImage: '',
-
-        twitterTitle: 'Hompepage',
-        twitterDescription: '',
-        twitterCard: 'summary_large_image',
-    })
 </script>
 
 <style lang="sass">
