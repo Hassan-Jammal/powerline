@@ -15,17 +15,19 @@
                     <img loading="lazy" class="h-14 self-end" :src="`images/logos/${product.logo}.svg`" :alt="product.title" />
                     <swiper-container 
                         :slides-per-view="1" 
-                        :pagination="true" 
+                        :pagination="{
+                            clickable: true
+                        }"
                         :autoplay="{ delay: 5000 }"
                         :speed="1000"
                         :space-between="20"
                         :grabCursor="true"
                         class="w-full"
                     >
-                        <swiper-slide v-for="(img, idx) in product.image" :key="idx">
+                        <swiper-slide v-for="(img, idx) in product.image" :key="idx" class="pb-6">
                             <img class="w-full" loading="lazy" :src="`images/products/${img}.png`" :alt="product.title" width="640" height="360"/>
                         </swiper-slide>
-                    </swiper-container>
+                    </swiper-container>      
                     <h2 class="text-xl leading-tight font-semibold">{{ product.description }}</h2>
                 </div>
             </div>
@@ -35,17 +37,18 @@
                     <div class="flex justify-between items-center gap-4">
                         <swiper-container 
                             :slides-per-view="1" 
-                            :pagination="true" 
                             :autoplay="{ delay: 5000 }"
                             :speed="1000"
                             :space-between="20"
                             :grabCursor="true"
+                            
                             class="w-32"
                         >
                             <swiper-slide v-for="(img, idx) in product.image" :key="idx">
                                 <img class="w-full" loading="lazy" :src="`images/products/${img}.png`" :alt="product.title" />
                             </swiper-slide>
                         </swiper-container>
+                        
                         <h2 class="text-xl leading-tight font-semibold">{{ product.description }}</h2>
                     </div>
                     <img loading="lazy" class="w-48" :src="`images/logos/${product.logo}.svg`" :alt="product.title" width="640" height="360" />
@@ -239,3 +242,12 @@
         );
     });
 </script>
+
+<style lang="sass" scoped>
+    swiper-container::part(pagination)
+        bottom: 0px
+
+    swiper-container::part(bullet-active)
+        @apply bg-[#EF2E33]
+
+</style>

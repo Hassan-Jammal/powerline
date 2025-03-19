@@ -32,7 +32,7 @@
                 <div class="container">
                     <div class="relative">
                         <div class="max-lg:w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 -z-10">
-                            <img :src="product.image" alt="">
+                            <img :src="`/images/products/${product.image[0]}.png`" alt="">
                         </div>
                         <div class="max-lg:w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 -z-20 w-1/3">
                             <svg width="100%" viewBox="0 0 388 605" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -41,8 +41,8 @@
                         </div>
                         <div class="flex max-lg:flex-col justify-between min-h-[calc(100vh-var(--headerHeight))] py-12 lg:py-24">
                             <div class="w-full lg:w-1/3 xl:w-1/4">
-                                <h2 class="text-[2.5rem] leading-tight font-semibold">{{ product.title }}</h2>
-                                <img class="mt-6" :src="product.logo" alt="">
+                                <h2 class="text-[2.5rem] leading-tight font-semibold">{{ product.description }}</h2>
+                                <img class="w-32 mt-6" :src="`/images/logos/${product.logo}.svg`" :alt="product.title">
                             </div>
                             <div class="w-full lg:w-1/3 xl:w-1/4 self-end">
                                 <p class="text-primary lg:text-right">{{ product.description }}</p>
@@ -172,28 +172,28 @@
     
     const products = [
         {
-            title: 'Fibre Optic and Cooper Cable for Infrastructure Networks',
-            description: 'Description can go here for example this is used for special applications or on specific market needs and customers specifications found in following applications: Railways, Naval,',
-            logo: '/images/3m.svg',
-            image: '/images/shrit.png',
+            title: "DecoDuct",
+            logo: "decoduct",
+            description: "PVC conduits (grey, white and black) - made in UAE",
+            image: ["decoduct-1", "decoduct-2", "decoduct-3"]
         },
         {
-            title: 'Fibre Optic Networks',
-            description: 'Description can go here for example this is used for special applications or on specific market needs and customers specifications found in following applications: Railways, Naval,',
-            logo: '/images/3m.svg',
-            image: '/images/astal.png',
+            title: "Kouvidis",
+            logo: "kouvidis",
+            description: "Flexible PVC tubes - made in Greece",
+            image: ["kouvidis-1", "kouvidis-2"]
         },
         {
-            title: 'Fibre Optic and Cooper Cable',
-            description: 'Description can go here for example this is used for special applications or on specific market needs and customers specifications found in following applications: Railways, Naval,',
-            logo: '/images/3m.svg',
-            image: '/images/shritt.png',
+            title: "ITCC",
+            logo: "itcc",
+            description: "EMT tubes and accessories - made in Saudi Arabia",
+            image: ["itcc-1", "itcc-2"]
         },
         {
-            title: 'Cooper Cable for Infrastructure Networks',
-            description: 'Description can go here for example this is used for special applications or on specific market needs and customers specifications found in following applications: Railways, Naval,',
-            logo: '/images/3m.svg',
-            image: '/images/astal.png',
+            title: "Atkore",
+            logo: "atkore",
+            description: "EMT conduits - made in USA",
+            image: ["atkore-1"]
         },
     ]
 
