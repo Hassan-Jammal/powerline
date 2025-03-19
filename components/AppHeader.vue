@@ -1,5 +1,5 @@
 <template>
-    <header class="fixed top-0 left-0 w-full z-50 flex flex-col justify-center items-center h-[calc(var(--headerHeight))] bg-white border-b transition-transform duration-300 ease-in-out" :class="{ '-translate-y-full': isScrolledDown, 'translate-y-0': isNavOpen }">
+    <header class="fixed top-0 left-0 w-full z-50 flex flex-col justify-center items-center h-[var(--headerHeight)] bg-white border-b transition-transform duration-300 ease-in-out" :class="{ '-translate-y-full': isScrolledDown, 'translate-y-0': isNavOpen }">
         <div class="container">
             <div class="flex justify-between items-center w-full">
                 <NuxtLink :to="`/`">
@@ -19,8 +19,13 @@
         </div>
 
         <!-- Mobile Navigation -->
-        <nav id="mobile-nav" :class="{ '-translate-x-full': !isNavOpen }" class="block lg:hidden fixed top-[93px] left-0 h-screen w-full bg-white text-xl z-[2] transition-all duration-300 ease-in-out overflow-y-scroll">
-            <div class="container"></div>
+        <nav id="mobile-nav" :class="{ '-translate-x-full': !isNavOpen }" class="block lg:hidden fixed top-[var(--headerHeight)] left-0 h-screen w-full bg-white text-xl z-[2] transition-all duration-300 ease-in-out overflow-y-scroll">
+            <div class="container">
+                <div class="flex flex-col justify-center items-center gap-8 h-[calc(100vh-var(--headerHeight))] w-full">
+                    <NuxtLink to="/products" class="link text-xl">Products</NuxtLink>
+                    <NuxtLink to="/contact us" class="link text-xl">Contact Us</NuxtLink>
+                </div>
+            </div>
         </nav>
     </header>
 </template>
