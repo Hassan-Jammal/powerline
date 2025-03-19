@@ -44,9 +44,9 @@
                                 <h2 class="text-[2.5rem] leading-tight font-semibold">{{ product.description }}</h2>
                                 <img class="w-32 mt-6" :src="`/images/logos/${product.logo}.svg`" :alt="product.title">
                             </div>
-                            <div class="w-full lg:w-1/3 xl:w-1/4 self-end">
+                            <!-- <div class="w-full lg:w-1/3 xl:w-1/4 self-end">
                                 <p class="text-primary lg:text-right">{{ product.description }}</p>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -81,9 +81,9 @@
 
     <section class="my-8 py-8">
         <div class="container">
-            <div class="flex max-lg:flex-col justify-between items-center gap-12 max-w-7xl mx-auto">
-                <div class="flex-1">
-                    <img class="w-full" src="/images/story.png" alt="Our Story">
+            <div class="flex max-lg:flex-col justify-between items-center gap-12 w-full lg:w-4/5 mx-auto">
+                <div class="flex-1 rounded-2xl overflow-hidden">
+                    <img class="w-full" src="/images/story.jpeg" alt="Our Story">
                 </div>
                 <div class="flex-1">
                     <h1 class="text-3xl font-semibold">Powerline Group was established in the Lebanese market since 2002, and is considered as one of the leading supplier of cable management systems</h1>

@@ -1,7 +1,7 @@
 <template>
     <section class="py-12 lg:py-24">
         <div class="container">
-            <div class="flex flex-col items-center gap-6">
+            <div class="flex flex-col items-center gap-6 text-center">
                 <img src="/images/logo-small.svg" alt="Powerline Group Logo Small" width="80" height="80" />
                 <h2 class="text-3xl leading-tight font-semibold">Contact our friendly team</h2>
                 <p class="text-xl">We're ready to help you supply all you electrical needs</p>

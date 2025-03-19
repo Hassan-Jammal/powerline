@@ -3,7 +3,7 @@
   <AppHeader />
 
   <div class="min-h-[calc(100vh-var(--headerHeight))] flex flex-col justify-between">
-    <main>
+    <main class="mt-[var(--headerHeight)]">
       <NuxtPage />
     </main>
 

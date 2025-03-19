@@ -1,12 +1,14 @@
 <template>
     <section class="py-12 lg:py-24">
         <div class="container">
-            <div class="flex justify-between">
+            <div class="flex max-lg:flex-col gap-8 justify-between">
                 <h1 class="text-lg font-semibold">Our line of products</h1>
                 <div class="flex justify-between items-stretch gap-2">
                     <input v-model="searchQuery" type="text" placeholder="Search products" class="w-80 px-3 py-2 border border-gray-300 rounded-lg">
-                    <img @click="viewMode = 'grid'" :class="{'border border-gray-300 rounded-lg shadow-md': viewMode === 'grid', 'cursor-pointer': viewMode !== 'grid', 'cursor-default': viewMode === 'grid'}" class="p-3" src="/images/grid-view.svg" alt="Grid view" width="50" height="50">
-                    <img @click="viewMode = 'list'" :class="{'border border-gray-300 rounded-lg shadow-md': viewMode === 'list', 'cursor-pointer': viewMode !== 'list', 'cursor-default': viewMode === 'list'}" class="p-3" src="/images/list-view.svg" alt="list view" width="50" height="50">
+                    <div class="flex justify-between items-stretch gap-2">
+                        <img @click="viewMode = 'grid'" :class="{'border border-gray-300 rounded-lg shadow-md': viewMode === 'grid', 'cursor-pointer': viewMode !== 'grid', 'cursor-default': viewMode === 'grid'}" class="p-3" src="/images/grid-view.svg" alt="Grid view" width="50" height="50">
+                        <img @click="viewMode = 'list'" :class="{'border border-gray-300 rounded-lg shadow-md': viewMode === 'list', 'cursor-pointer': viewMode !== 'list', 'cursor-default': viewMode === 'list'}" class="p-3" src="/images/list-view.svg" alt="list view" width="50" height="50">
+                    </div>
                 </div>
             </div>
 
@@ -37,21 +39,23 @@
                     <div class="flex justify-between items-center gap-4">
                         <swiper-container 
                             :slides-per-view="1" 
+                            :pagination="{
+                                clickable: true
+                            }"
                             :autoplay="{ delay: 5000 }"
                             :speed="1000"
                             :space-between="20"
                             :grabCursor="true"
-                            
                             class="w-32"
                         >
-                            <swiper-slide v-for="(img, idx) in product.image" :key="idx">
+                            <swiper-slide v-for="(img, idx) in product.image" :key="idx" class="pb-6">
                                 <img class="w-full" loading="lazy" :src="`images/products/${img}.png`" :alt="product.title" />
                             </swiper-slide>
                         </swiper-container>
                         
                         <h2 class="text-xl leading-tight font-semibold">{{ product.description }}</h2>
                     </div>
-                    <img loading="lazy" class="w-48" :src="`images/logos/${product.logo}.svg`" :alt="product.title" width="640" height="360" />
+                    <img loading="lazy" class="w-32" :src="`images/logos/${product.logo}.svg`" :alt="product.title" width="640" height="360" />
                 </div>
             </div>
         </div>
@@ -249,5 +253,4 @@
 
     swiper-container::part(bullet-active)
         @apply bg-[#EF2E33]
-
 </style>
