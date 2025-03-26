@@ -1,6 +1,6 @@
 <template>
     <section class="py-12 lg:py-24">
-        <div v-if="productData" class="container">
+        <div class="container">
             <div class="flex max-lg:flex-col gap-8 justify-between">
                 <h1 class="text-lg font-semibold">Our line of products</h1>
                 <div class="flex justify-between items-stretch gap-2">
@@ -12,35 +12,12 @@
                 </div>
             </div>
  
-            <div v-if="viewMode === 'grid'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
-                <div v-for="(product, index) in filteredProducts" :key="index" class="flex flex-col gap-12 border rounded-2xl p-8">
-                    <div class="relative w-full h-14 self-end">
-                        <img loading="lazy" class="absolute right-0 h-full object-contain" :src="product.acf.logo.url" :alt="product.title.rendered" />
-                    </div>
-                    <ClientOnly>
-                        <swiper-container 
-                            :slides-per-view="1" 
-                            :pagination="{
-                                clickable: true
-                            }"
-                            :autoplay="{ delay: 5000 }"
-                            :speed="1000"
-                            :space-between="20"
-                            :grabCursor="true"
-                            class="w-full"
-                        >
-                            <swiper-slide v-for="(img, idx) in product.acf.images" :key="idx" class="pb-6">
-                                <img class="w-full" loading="lazy" :src="img.url" :alt="product.title.rendered" width="640" height="360"/>
-                            </swiper-slide>
-                        </swiper-container>  
-                    </ClientOnly>    
-                    <h2 class="text-xl leading-tight font-semibold">{{ product.acf.description }}</h2>
-                </div>
-            </div>
-
-            <div v-else class="flex flex-col gap-4 mt-12">
-                <div v-for="(product, index) in filteredProducts" :key="index" class="flex max-lg:flex-col justify-between lg:items-center gap-12 border rounded-2xl p-8">
-                    <div class="flex max-lg:flex-col justify-between lg:items-center gap-4 order-1 lg:order-0">
+            <template v-if="productData">
+                <div v-if="viewMode === 'grid'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+                    <div v-for="(product, index) in filteredProducts" :key="index" class="flex flex-col gap-12 border rounded-2xl p-8">
+                        <div class="relative w-full h-14 self-end">
+                            <img loading="lazy" class="absolute right-0 h-full object-contain" :src="product.acf.logo.url" :alt="product.title.rendered" />
+                        </div>
                         <ClientOnly>
                             <swiper-container 
                                 :slides-per-view="1" 
@@ -51,19 +28,48 @@
                                 :speed="1000"
                                 :space-between="20"
                                 :grabCursor="true"
-                                class="w-full lg:w-32"
+                                class="w-full"
                             >
                                 <swiper-slide v-for="(img, idx) in product.acf.images" :key="idx" class="pb-6">
-                                    <img class="w-full" loading="lazy" :src="img.url" :alt="product.title.rendered" />
+                                    <img class="w-full" loading="lazy" :src="img.url" :alt="product.title.rendered" width="640" height="360"/>
                                 </swiper-slide>
-                            </swiper-container>
+                            </swiper-container>  
                         </ClientOnly>    
-                            
                         <h2 class="text-xl leading-tight font-semibold">{{ product.acf.description }}</h2>
                     </div>
-                    <img loading="lazy" class="w-32 order-0 lg:order-1" :src="product.acf.logo.url" :alt="product.title.rendered" width="640" height="360" />
                 </div>
-            </div>
+
+                <div v-else class="flex flex-col gap-4 mt-12">
+                    <div v-for="(product, index) in filteredProducts" :key="index" class="flex max-lg:flex-col justify-between lg:items-center gap-12 border rounded-2xl p-8">
+                        <div class="flex max-lg:flex-col justify-between lg:items-center gap-4 order-1 lg:order-0">
+                            <ClientOnly>
+                                <swiper-container 
+                                    :slides-per-view="1" 
+                                    :pagination="{
+                                        clickable: true
+                                    }"
+                                    :autoplay="{ delay: 5000 }"
+                                    :speed="1000"
+                                    :space-between="20"
+                                    :grabCursor="true"
+                                    class="w-full lg:w-32"
+                                >
+                                    <swiper-slide v-for="(img, idx) in product.acf.images" :key="idx" class="pb-6">
+                                        <img class="w-full" loading="lazy" :src="img.url" :alt="product.title.rendered" />
+                                    </swiper-slide>
+                                </swiper-container>
+                            </ClientOnly>    
+                                
+                            <h2 class="text-xl leading-tight font-semibold">{{ product.acf.description }}</h2>
+                        </div>
+                        <img loading="lazy" class="w-32 order-0 lg:order-1" :src="product.acf.logo.url" :alt="product.title.rendered" width="640" height="360" />
+                    </div>
+                </div>
+            </template>
+
+            <template v-else>
+                <ProductsLoader />
+            </template>
         </div>
     </section>
 </template>
