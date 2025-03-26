@@ -1,6 +1,6 @@
 <template>
   <NuxtLoadingIndicator class="!opacity-100" />
-	<!-- <Preloader /> -->
+	<Preloader />
   
   <AppHeader />
 
