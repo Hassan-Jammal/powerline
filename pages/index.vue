@@ -104,12 +104,6 @@
         twitterCard: 'summary_large_image',
     })
 
-    // const { data, error, fetchData } = useApiFetch(); // Use the composable
-
-    // onMounted(() => {
-    //     fetchData('http://backend.powerline.localhost/wp-json/wp/v2/pages/21', 'acf');
-    // });
-
     const { fetchData } = useApiFetch();
 
     const projectsData = ref(null);
@@ -129,9 +123,6 @@
 
         productsData.value = productsResponse.data;
         productError.value = productsResponse.error;
-
-        // console.log('Projects Data:', projectsData.value);
-        // console.log('Product Data:', productsData.value);
     } catch (err) {
         console.error('API Fetch Error:', err);
     }

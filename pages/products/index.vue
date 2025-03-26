@@ -104,13 +104,13 @@
     const viewMode = ref('grid'); // Define `viewMode` as a reactive ref
 
     const filteredProducts = computed(() => {
-    return productData.value.filter(product => {
-        const title = product.title?.toString().toLowerCase() || '';
-        const description = product.description?.toString().toLowerCase() || '';
-        const matchesSearch = title.includes(searchQuery.value.toLowerCase()) || description.includes(searchQuery.value.toLowerCase());
-        return matchesSearch;
+        return productData.value.filter(product => {
+            const title = product.title.rendered.toString().toLowerCase() || '';
+            const description = product.acf.description?.toString().toLowerCase() || '';
+            const matchesSearch = title.includes(searchQuery.value.toLowerCase()) || description.includes(searchQuery.value.toLowerCase());
+            return matchesSearch;
+        });
     });
-});
 </script>
 
 <style lang="sass" scoped>
