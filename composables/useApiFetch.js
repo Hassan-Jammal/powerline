@@ -1,6 +1,3 @@
-// composables/useApiFetch.js
-import { ref } from 'vue';
-
 export const useApiFetch = () => {
     const data = ref(null);
     const error = ref(null);
@@ -12,14 +9,14 @@ export const useApiFetch = () => {
                 throw new Error('Failed to fetch data');
             }
             data.value = await response.json();
+            return { data: data.value, error: null }; // Return the response
         } catch (err) {
             error.value = err.message;
+            return { data: null, error: error.value }; // Return error as well
         }
     };
 
     return {
-        data,
-        error,
         fetchData
     };
 };

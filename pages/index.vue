@@ -124,7 +124,7 @@
     // const { data, error, fetchData } = useApiFetch(); // Use the composable
 
     // onMounted(() => {
-    //     fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/pages/21', 'acf');
+    //     fetchData('http://backend.powerline.localhost/wp-json/wp/v2/pages/21', 'acf');
     // });
 
     const { fetchData } = useApiFetch();
@@ -135,29 +135,23 @@
     const productData = ref(null);
     const productError = ref(null);
 
-    onMounted(async () => {
-        try {
-            // Fetch Page Data
-            const projectsResponse = await fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/pages/21', 'acf');
-            if (projectsResponse) {
-                projectsData.value = projectsResponse.data.value;
-                projectsError.value = projectsResponse.error.value;
-            }
+    try {
+        const [projectsResponse, productsResponse] = await Promise.all([
+            fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/pages/21', 'acf'),
+            // fetchData('http://backend.powerline.localhost/wp-json/wp/v2/products', 'title,acf')
+        ]);
 
-            console.log('Projects Data:', projectsResponse);
+        projectsData.value = projectsResponse.data;
+        projectsError.value = projectsResponse.error;
 
-            // // Fetch Product Data
-            // const productResponse = await fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/products', 'title,acf');
-            // if (productResponse) {
-            //     productData.value = productResponse.data.value;
-            //     productError.value = productResponse.error.value;
-            // }
+        // productData.value = productsResponse.data;
+        // productError.value = productsResponse.error;
 
-            // console.log('Product Data:', productData.value);
-        } catch (err) {
-            console.error('API Fetch Error:', err);
-        }
-    });
+        // console.log('Projects Data:', projectsData.value);
+        // console.log('Product Data:', productData.value);
+    } catch (err) {
+        console.error('API Fetch Error:', err);
+    }
 
     const locations = [
         'AUBMC ACC',
