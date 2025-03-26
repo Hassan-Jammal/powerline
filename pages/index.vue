@@ -72,7 +72,7 @@
 
         <div class="marquee overflow-hidden">
             <div class="wrapper grid grid-flow-col auto-cols-[10rem] lg:auto-cols-[15rem] justify-items-center items-center mt-10 lg:my-10 animate-[marquee_40s_linear_infinite] lg:animate-[marqueelg_40s_linear_infinite]">
-                <template v-for="(marquee, index) in duplicatedMarqueeList" :key="index">
+                <template v-if="projectsData" v-for="(marquee, index) in duplicatedMarqueeList" :key="index">
                     <img loading="lazy" class="marquee-item w-2/3" :src="`images/logos/${marquee.image}.svg`" :alt="marquee.alt" :width="marquee.width" :height="marquee.height" data-aos="fade-up" :data-aos-delay="(index + 1) * 100"/>
                 </template>
             </div>
@@ -82,10 +82,10 @@
     <section class="my-8 py-8">
         <div class="container">
             <div class="flex max-lg:flex-col justify-between items-center gap-12 w-full lg:w-4/5 mx-auto">
-                <div class="flex-1 rounded-2xl overflow-hidden">
+                <div class="flex-1 rounded-2xl overflow-hidden order-1 lg:order-0">
                     <img class="w-full" src="/images/story.jpeg" alt="Our Story">
                 </div>
-                <div class="flex-1">
+                <div class="flex-1 order-0 lg:order-1">
                     <h1 class="text-3xl font-semibold">Powerline Group was established in the Lebanese market since 2002, and is considered as one of the leading supplier of cable management systems</h1>
                     <p class="mt-4">We've been supplying markets inside and outside of Lebanon for more than 10 years, with electrical products built by the American as well as European standards. </p>
                 </div>
@@ -97,16 +97,17 @@
         <div class="container">
             <h3 class="text-4xl font-semibold">Projects we're proud to say we worked on</h3>
             <div class="flex flex-wrap gap-4 mt-10 text-center text-sm justify-center">
-                <template v-for="item in locations" :key="item">
-                    <div class="w-[calc(20%-16px)] min-w-[180px] p-4 rounded-2xl border border-gray-200 bg-white text-xl">{{ item }}</div>
+                <template v-if="projectsData" v-for="item in projectsData.acf.projects" :key="item">
+                    <div class="w-[calc(20%-16px)] min-w-[180px] p-4 rounded-2xl border border-gray-200 bg-white text-xl">{{ item.name }}</div>
                 </template>
             </div>   
         </div>
     </section>
-
 </template>
 
 <script setup>
+    import { useApiFetch } from '@/composables/useApiFetch'; // Import the composable
+
     useSeoMeta({
         title: 'Hompepage',
         description: '',
@@ -119,6 +120,44 @@
         twitterDescription: '',
         twitterCard: 'summary_large_image',
     })
+
+    // const { data, error, fetchData } = useApiFetch(); // Use the composable
+
+    // onMounted(() => {
+    //     fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/pages/21', 'acf');
+    // });
+
+    const { fetchData } = useApiFetch();
+
+    const projectsData = ref(null);
+    const projectsError = ref(null);
+
+    const productData = ref(null);
+    const productError = ref(null);
+
+    onMounted(async () => {
+        try {
+            // Fetch Page Data
+            const projectsResponse = await fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/pages/21', 'acf');
+            if (projectsResponse) {
+                projectsData.value = projectsResponse.data.value;
+                projectsError.value = projectsResponse.error.value;
+            }
+
+            console.log('Projects Data:', projectsResponse);
+
+            // // Fetch Product Data
+            // const productResponse = await fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/products', 'title,acf');
+            // if (productResponse) {
+            //     productData.value = productResponse.data.value;
+            //     productError.value = productResponse.error.value;
+            // }
+
+            // console.log('Product Data:', productData.value);
+        } catch (err) {
+            console.error('API Fetch Error:', err);
+        }
+    });
 
     const locations = [
         'AUBMC ACC',
