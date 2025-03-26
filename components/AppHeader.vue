@@ -23,7 +23,7 @@
             <div class="container">
                 <div class="flex flex-col justify-center items-center gap-8 h-[calc(100vh-var(--headerHeight))] w-full">
                     <NuxtLink to="/products" class="link text-xl">Products</NuxtLink>
-                    <NuxtLink to="/contact us" class="link text-xl">Contact Us</NuxtLink>
+                    <NuxtLink to="/contact-us" class="link text-xl">Contact Us</NuxtLink>
                 </div>
             </div>
         </nav>
