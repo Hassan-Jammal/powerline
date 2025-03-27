@@ -83,7 +83,8 @@
 
 <script setup>
     import { useApiFetch } from '@/composables/useApiFetch'; // Import the composable
-    import { debounce } from 'lodash';
+    import pkg from 'lodash';
+    const { debounce } = pkg;
 
     useSeoMeta({
         title: 'Products',
