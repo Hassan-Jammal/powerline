@@ -12,7 +12,7 @@
                 </div>
             </div>
  
-            <template v-if="productData">
+            <template v-if="productData.length > 0">
                 <div v-if="viewMode === 'grid'" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
                     <div v-for="(product, index) in productData" :key="index" class="flex flex-col gap-12 border rounded-2xl p-8">
                         <div class="relative w-full h-14 self-end">
@@ -67,15 +67,15 @@
                 </div>
 
                 <!-- Load More Button -->
-                <div v-if="searchQuery == ''" class="flex justify-center mt-6">
-                    <p v-if="hasMore" @click="fetchProducts" class="py-3 px-6 text-sm font-semibold rounded-full bg-[#101828] text-white cursor-pointer" :disabled="isLoading">
+                <div v-if="hasMore || searchQuery == ''" class="flex justify-center mt-6">
+                    <span v-if="!isLoading" @click="fetchProducts" class="py-3 px-6 text-sm font-semibold rounded-full bg-[#101828] text-white cursor-pointer" :disabled="isLoading">
                         {{ isLoading ? 'Loading...' : 'Load More' }}
-                    </p>
+                    </span>
                 </div>
             </template>
 
             <template v-else>
-                <ProductsLoader />
+                <ProductsLoader class="mt-12"/>
             </template>
         </div>
     </section>
