@@ -19,6 +19,7 @@
   "devDependencies": {
     "@nuxtjs/google-fonts": "^3.2.0",
     "@nuxtjs/tailwindcss": "^6.13.1",
+    "nuxt-lodash": "^2.5.3",
     "nuxt-swiper": "^2.0.0"
   }
 }
