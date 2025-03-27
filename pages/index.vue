@@ -19,7 +19,7 @@
                             <div class="flex max-lg:flex-col justify-between min-h-[calc(100vh-var(--headerHeight))] py-12 lg:py-24">
                                 <div class="w-full lg:w-1/3 xl:w-1/4">
                                     <h2 class="text-[2.5rem] leading-tight font-semibold">{{ product.acf.description }}</h2>
-                                    <img class="w-32 mt-6" :src="product.acf.logo.url" :alt="product.title.rendered">
+                                    <img class="w-1/2 lg:w-32 mt-6" :src="product.acf.logo.url" :alt="product.title.rendered">
                                 </div>
                                 <!-- <div class="w-full lg:w-1/3 xl:w-1/4 self-end">
                                     <p class="text-primary lg:text-right">{{ product.description }}</p>
@@ -111,8 +111,8 @@
 
     try {
         const [projectsResponse, productsResponse] = await Promise.all([
-            fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/pages/21', ''),
-            fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/product', 'title,acf')
+            fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/pages/21', '', '100', '1', ''),
+            fetchData('https://backend.grouppowerline.com/wp-json/wp/v2/product', 'title,acf', '100', '1', '')
         ]);
 
         projectsData.value = projectsResponse.data;
