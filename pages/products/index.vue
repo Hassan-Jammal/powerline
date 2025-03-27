@@ -2,10 +2,10 @@
     <section class="py-12 lg:py-24">
         <div class="container">
             <div class="flex max-lg:flex-col gap-8 justify-between">
-                <h1 class="text-lg font-semibold">Our line of products</h1>
+                <h1 class="text-2xl font-semibold">Our line of products</h1>
                 <div class="flex justify-between items-stretch gap-2">
-                    <input v-model="searchQuery" type="text" placeholder="Search products" class="w-80 px-3 py-2 border border-gray-300 rounded-lg">
-                    <div class="flex justify-between items-stretch gap-2">
+                    <input v-model="searchQuery" type="text" placeholder="Search products" class="w-full lg:w-80 px-3 py-2 border border-gray-300 rounded-lg">
+                    <div class="hidden lg:flex justify-between items-stretch gap-2">
                         <img @click="viewMode = 'grid'" :class="{'border border-gray-300 rounded-lg shadow-md': viewMode === 'grid', 'cursor-pointer': viewMode !== 'grid', 'cursor-default': viewMode === 'grid'}" class="p-3" src="/images/grid-view.svg" alt="Grid view" width="50" height="50">
                         <img @click="viewMode = 'list'" :class="{'border border-gray-300 rounded-lg shadow-md': viewMode === 'list', 'cursor-pointer': viewMode !== 'list', 'cursor-default': viewMode === 'list'}" class="p-3" src="/images/list-view.svg" alt="list view" width="50" height="50">
                     </div>

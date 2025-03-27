@@ -10,10 +10,12 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
                 <div v-for="(info, index) in info" :key="index" class="flex flex-col items-between gap-24 border rounded-2xl p-8">
                     <img :src="`/images/${info.icon}.svg`" :alt="info.title" width="48" height="48" />
-                    <div class="flex flex-col gap-2">
-                        <h2 class="text-3xl leading-tight font-semibold">{{ info.title }}</h2>
-                        <p class="text-xl" v-html="info.description"></p>
-                        <a :href="formatLink(info.link)" class="mt-4 text-xl font-bold underline underline-offset-4">{{ info.link }}</a>
+                    <div class="flex flex-col gap-2 justify-between h-full">
+                        <div class="flex flex-col gap-2">
+                            <h2 class="text-3xl leading-tight font-semibold">{{ info.title }}</h2>
+                            <p class="text-xl" v-html="info.description"></p>
+                        </div>
+                        <a :href="formatLink(info.link)" class="mt-4 text-xl font-bold underline underline-offset-4">{{ info.link_text }}</a>
                     </div>
                 </div>
             </div>
@@ -40,19 +42,22 @@
             icon: "email",
             title: "Chat with us",
             description: "We're always here to help",
-            link: "hi@powerlinegroup.com",
+            link_text: "info@grouppowerline.com",
+            link: "info@grouppowerline.com",
         },
         {
             icon: "location",
             title: "Visit us",
             description: "We're always here to help",
-            link: "View on Google Maps",
+            link_text: "View on Google Maps",
+            link: "https://maps.app.goo.gl/G5myKRoBRfFprvCZ6?g_st=com.google.maps.preview.copy",
         },
         {
             icon: "phone",
             title: "Call us",
             description: "Monday to Friday from 8am till 5pm",
-            link: "+961 9 123 456",
+            link_text: "+961 9 232 390",
+            link: "+961 9 232 390",
         },
     ]
 

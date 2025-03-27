@@ -1,5 +1,5 @@
 <template>
-    <section v-if="productsData">
+    <section v-if="productsData" class="bg-[url('/images/lightning.svg')] bg-center bg-no-repeat bg-[length:80%_80%]">
         <swiper-container 
             ref="swiperRef"
             :slides-per-view="1" 
@@ -8,7 +8,6 @@
             :speed="1000"
             :grabCursor="true"
         >
-
             <template v-for="(product, index) in productsData" :key="index">
                 <swiper-slide v-if="product.acf.carousel.featured">
                     <div class="container">
@@ -16,11 +15,7 @@
                             <div class="max-lg:w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 -z-10">
                                 <img :src="product.acf.carousel.image.url" alt="">
                             </div>
-                            <div class="max-lg:w-full absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 -z-20 w-1/3">
-                                <svg width="100%" viewBox="0 0 388 605" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M153.265 361.206H19.9045C15.3842 361.206 11.0029 359.642 7.5042 356.78C-0.866896 349.931 -2.10117 337.593 4.7473 329.222L267.86 7.61116C272.9 1.45119 281.166 -1.04627 288.773 1.29296C299.111 4.47184 304.914 15.4295 301.735 25.7673L234.731 243.667H368.123C372.644 243.667 377.026 245.231 380.525 248.094C388.895 254.944 390.128 267.282 383.279 275.652L120.135 597.207C115.095 603.366 106.829 605.862 99.2222 603.523C88.8845 600.343 83.0822 589.385 86.2619 579.047L153.265 361.206Z" fill="#F3F3F4"/>
-                                </svg>
-                            </div>
+                           
                             <div class="flex max-lg:flex-col justify-between min-h-[calc(100vh-var(--headerHeight))] py-12 lg:py-24">
                                 <div class="w-full lg:w-1/3 xl:w-1/4">
                                     <h2 class="text-[2.5rem] leading-tight font-semibold">{{ product.acf.description }}</h2>
@@ -81,7 +76,9 @@
             <h3 class="text-4xl font-semibold">Projects we're proud to say we worked on</h3>
             <div class="flex flex-wrap gap-4 mt-10 text-center text-sm justify-center">
                 <template v-if="projectsData" v-for="item in projectsData.acf.projects" :key="item">
-                    <div class="w-[calc(20%-16px)] min-w-[180px] p-4 rounded-2xl border border-gray-200 bg-white text-xl">{{ item.name }}</div>
+                    <div class="w-[calc(20%-16px)] min-w-[180px] p-4 rounded-2xl border border-gray-200 bg-white text-xl flex items-center justify-center">
+                        {{ item.name }}
+                    </div>
                 </template>
             </div>   
         </div>
